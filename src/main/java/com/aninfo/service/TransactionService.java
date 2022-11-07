@@ -5,7 +5,6 @@ import com.aninfo.model.Transaction;
 import com.aninfo.repository.TransactionRepository;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,21 +17,17 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
 
     public Transaction createTransaction(Transaction transaction){
-        if (!transaction.getType().equals("withdrawal") && !transaction.getType().equals("deposit"))
+        if (!transaction.isWithdrawal() && !transaction.isDeposit())
             throw new InvalidTransactionTypeException("Invalid type of transaction");
         
         return transactionRepository.save(transaction);
-    }
-
-    public Collection<Transaction> getTransactions() {
-        return transactionRepository.findAll();
     }
 
     public Optional<Transaction> findById(Long id) {
         return transactionRepository.findById(id);
     }
 
-    public List<Transaction> getTransactionsByAccountCbu(Long accountCbu) {
+    public Collection<Transaction> getTransactionsByAccountCbu(Long accountCbu) {
         return transactionRepository.findByAccountCbu(accountCbu);
     }
 

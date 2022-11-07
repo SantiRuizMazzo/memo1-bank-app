@@ -24,19 +24,19 @@ public class Transaction {
         this.accountCbu = accountCbu;
     }
 
-    public Long getId(){
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id){
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Double getSum(){
+    public Double getSum() {
         return sum;
     }
 
-    public void setSum(Double sum){
+    public void setSum(Double sum) {
         this.sum = sum;
     }
 
@@ -44,15 +44,23 @@ public class Transaction {
         return type;
     }
 
-    public void setType(String type){
+    public void setType(String type) {
         this.type = type;
     }
 
-    public Long getAccountCbu(){
+    public boolean isWithdrawal() {
+        return type.equals("withdrawal");
+    }
+
+    public boolean isDeposit() {
+        return type.equals("deposit");
+    }
+
+    public Long getAccountCbu() {
         return accountCbu;
     }
 
-    public void setAccountCbu(Long accountCbu){
+    public void setAccountCbu(Long accountCbu) {
         this.accountCbu = accountCbu;
     }
 }

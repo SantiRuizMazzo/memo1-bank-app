@@ -2,6 +2,7 @@ package com.aninfo.repository;
 
 import com.aninfo.model.Transaction;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,7 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
 
     Optional<Transaction> findById(Long id);
 
-    List<Transaction> findByAccountCbu(Long accountCbu);
+    Collection<Transaction> findByAccountCbu(Long accountCbu);
 
     @Override
     List<Transaction> findAll();

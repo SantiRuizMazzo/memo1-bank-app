@@ -86,19 +86,14 @@ public class Memo1BankApp {
 		return transactionService.createTransaction(transaction);
 	}
 
-	@GetMapping("/transactions")
-	public Collection<Transaction> getTransactions() {
-		return transactionService.getTransactions();
-	}
-
 	@GetMapping("/transactions/{id}")
 	public ResponseEntity<Transaction> getTransaction(@PathVariable Long id) {
 		Optional<Transaction> transactionOptional = transactionService.findById(id);
 		return ResponseEntity.of(transactionOptional);
 	}
 
-	@GetMapping("/transactions?")
-	public Collection<Transaction> getTransactionsByAccountCbu(@RequestParam("cbu") Long cbu) {
+	@GetMapping("/transactions")
+	public Collection<Transaction> getTransactionsByAccountCbu(@RequestParam(required = true) Long cbu) {
 		return transactionService.getTransactionsByAccountCbu(cbu);
 	}
 
